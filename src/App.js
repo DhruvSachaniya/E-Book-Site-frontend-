@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AppComponets from "./componets/app/AppComponets";
+import SigninPage from "./componets/startup/signin";
+import { Toaster } from "react-hot-toast";
+import PostBookPage from "./componets/Post/PostBookpage";
+import CataloguePostPage from "./componets/Post/Cataloguepost";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<SigninPage/>} />
+          <Route path="/Home" element={<AppComponets/>}/>
+          <Route path="/postbook" element={<PostBookPage/>}/>
+          <Route path="/postCatalogue" element={<CataloguePostPage/>}/>
+        </Routes>
+      </BrowserRouter>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+      />
+    </>
   );
 }
 

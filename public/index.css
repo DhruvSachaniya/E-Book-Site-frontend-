@@ -1,0 +1,648 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+:root {
+    --color-primary: #6C9BCF;
+    --color-danger: #FF0060;
+    --color-success: #1B9C85;
+    --color-warning: #F7D060;
+    --color-white: #fff;
+    --color-info-dark: #7d8da1;
+    --color-dark: #363949;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+    --color-silverockunivercity: #8d3131;
+
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 1.2rem;
+
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    appearance: 0;
+    border: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 14px;
+}
+
+.Header {
+    display: block;
+    width: 100%;
+    height: max-content;
+    text-align: center;
+}
+
+.Header-h1 {
+    display: block;
+    width: 100%;
+    padding: 30px 30px;
+    background-color: var(--color-background);
+}
+
+.Header-h2 {
+    display: block;
+    /* background will change by image */
+    width: 100%;
+    padding: 80px 80px;
+    font-size: 3rem;
+    color: var(--color-silverockunivercity);
+}
+
+.container-head {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10%;
+    justify-content: center;
+}
+
+aside {
+    height: 100vh;
+}
+
+.Catalogue-box {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-light);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    height: auto;
+    position: relative;
+    top: 3.5rem;
+    transition: all 0.3s ease;
+    width: 25rem;
+    /* left: 10rem; */
+    /* padding: 30px; */
+}
+
+.Catalogue-box:hover {
+    box-shadow: none;
+}
+
+.Catalogue-box div {
+    display: flex;
+    align-items: center;
+    color: var(--color-info-dark);
+    height: 3.7rem;
+    gap: 1rem;
+    position: relative;
+    /* margin-left: 2rem; */
+    -webkit-transition: ease-out 0.4s;
+    -moz-transition: ease-out 0.4s;
+    transition: ease-out 0.4s;
+    cursor: pointer;
+}
+
+.Catalogue-box h3 {
+    margin-left: 2rem;
+}
+
+.Catalogue-box div:hover {
+    box-shadow: inset 400px 0 0 0 var(--color-silverockunivercity);
+    color: var(--color-background);
+}
+
+/* .Catalogue-box h3:hover {
+    margin-left: 1rem;
+    transition: all 0.3 ease-in-out;
+} */
+
+.Catalogue-box div.active {
+    color: var(--color-background);
+    background-color: var(--color-silverockunivercity);
+}
+
+.Serach-Box {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: var(--color-light);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    height: auto;
+    position: relative;
+    top: 3.5rem;
+    transition: all 0.3s ease;
+    width: 50rem;
+    padding: 30px;
+}
+
+.dropdown-container {
+    position: relative;
+}
+
+.dropdown-header {
+    padding: 10px;
+}
+
+.dropdown-content {
+    top: 50px;
+    left: 0;
+    width: max-content;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-left: 0.5rem;
+}
+
+.dropdown-content select {
+    width: max-content;
+    padding: 10px;
+    border: none;
+    outline: none;
+    padding-right: 5rem;
+    color: var(--color-info-dark);
+}
+
+.dropdown-container.open .dropdown-content {
+    display: block;
+}
+
+.Serach-Box .Serach-Dropdown {
+    display: flex;
+    flex-direction: row;
+    gap: 10%;
+}
+
+.titleinput-header {
+    padding: 10px;
+}
+
+.titleinput-content {
+    top: 50px;
+    left: 0;
+    width: max-content;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-left: 0.5rem;
+}
+
+.titleinput-content input {
+    width: max-content;
+    padding: 10px;
+    border: none;
+    outline: none;
+    padding-right: 2rem;
+    color: var(--color-info-dark);
+}
+
+.Search-Button {
+    background-color: var(--color-silverockunivercity);
+    color: white;
+    padding: 6px;
+    border: none;
+    cursor: pointer;
+    width: 5rem;
+    opacity: 0.9;
+    margin-top: 2rem;
+    height: 2rem;
+}
+
+.Refresh-Button {
+    background-color: var(--color-silverockunivercity);
+    color: white;
+    padding: 6px;
+    border: none;
+    cursor: pointer;
+    width: 5rem;
+    opacity: 0.9;
+    margin-top: 2rem;
+    height: 2rem;
+}
+
+.Serach-Buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+    margin-left: 0.5rem;
+}
+
+.Search-Table {
+    margin-top: 4rem;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid var(--color-background);
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: var(--color-background);
+}
+
+.pdf-button {
+    background-color: var(--color-silverockunivercity);
+    color: white;
+    padding: 3px;
+    border: none;
+    cursor: pointer;
+    width: 3rem;
+    opacity: 0.9;
+}
+
+/* footer */
+
+.footer-box {
+    margin-top: 10rem;
+    background-color: var(--color-silverockunivercity);
+    color: var(--color-background);
+    text-align: center;
+    padding: 20px;
+}
+
+.footer-box .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2rem;
+}
+
+.contact-us-button {
+    color: var(--color-silverockunivercity)!important;
+    background: var(--color-white)!important;
+}
+
+.btn-lg {
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: 0.3rem;
+}
+
+
+
+/* signin page */
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    /* background: url("http://codingstella.com/wp-content/uploads/2024/01/download-6-scaled.jpeg") no-repeat; */
+    background: url(/images/library-background-img.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.login-box {
+    position: relative;
+    width: 407px;
+    height: 455px;
+    background: transparent;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10 rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+}
+
+.login-box h2 {
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+}
+
+.input-box {
+    position: relative;
+    width: 310px;
+    margin: 30px 0;
+    border-bottom: 1px solid #fff;
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: -5px;
+}
+
+.input-box input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #fff;
+    padding: 0 35px 0 5px;
+}
+
+.input-box .icon {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    color: #fff;
+    transform: translateY(-50%);
+}
+
+.wrapper button {
+    width: 100%;
+    height: 40px;
+    background-color: #fff;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #000;
+    font-weight: 500;
+}
+
+/* Postbook page */
+
+.postbook-container-head {
+    display: flex;
+    justify-content: center;
+}
+
+.postbook-box {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: var(--color-light);
+    box-shadow: var(--color-dark);
+    border-radius: 5px;
+    height: 88vh;
+    position: relative;
+    top: 3.5rem;
+    transition: all 0.3s ease;
+    width: 80rem;
+    padding: 30px;
+    align-content: center;
+    justify-content: center;
+}
+
+.postbook-box h1 {
+    margin-left: 5.5rem;
+    color: var(--color-silverockunivercity);
+    font-size: 3rem;
+}
+
+.postbook-box .dropdown-content {
+    top: 50px;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-left: 0.5rem;
+}
+
+.postbook-box .titleinput-content {
+    top: 50px;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-left: 0.5rem;
+}
+
+.postbook-box .dropdown-content select {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    padding-right: 5rem;
+    color: var(--color-info-dark);
+}
+
+.Postbook-Button {
+    background-color: var(--color-silverockunivercity);
+    color: white;
+    padding: 6px;
+    border: none;
+    cursor: pointer;
+    width: 5rem;
+    opacity: 0.9;
+    margin-top: 2rem;
+    height: 2rem;
+}
+
+/* postbook chosefile */
+.inputfile {
+    /* max-width: 80%; */
+    /* font-size: 1.25rem; */
+    /* 20px */
+    /* font-weight: 700; */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.625rem 1.25rem;
+    background: var(--color-silverockunivercity);
+    margin-top: 2rem;
+    color: var(--color-white);
+    margin-left: 0.5rem;
+}
+
+/* for mobile */
+
+@media (max-width:500px) {
+    .container-head {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 15%;
+    }
+
+    .Catalogue-box {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--color-light);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 5px;
+        height: 88vh;
+        position: relative;
+        top: 3.5rem;
+        transition: all 0.3s ease;
+        width: 25rem;
+        margin-bottom: 3rem;
+    }
+
+    .Serach-Box {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        background-color: var(--color-light);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 5px;
+        height: 88vh;
+        position: relative;
+        top: 3.5rem;
+        transition: all 0.3s ease;
+        width: 25rem;
+        padding: 30px;
+    }
+
+    .Serach-Box .Serach-Dropdown {
+        display: flex;
+        flex-direction: column;
+        gap: 10%;
+    }
+
+    .Serach-Buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 5%;
+        margin-left: 0.5rem;
+    }
+    .footer-box .row {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+}
+
+/* tablet */
+
+@media (max-width: 768px) {
+    .container-head {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 15%;
+    }
+
+    .Catalogue-box {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--color-light);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 5px;
+        height: auto;
+        position: relative;
+        top: 3.5rem;
+        transition: all 0.3s ease;
+        width: 25rem;
+        margin-bottom: 3rem;
+    }
+
+    .Serach-Box {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        background-color: var(--color-light);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 5px;
+        height: auto;
+        position: relative;
+        top: 3.5rem;
+        transition: all 0.3s ease;
+        width: 25rem;
+        padding: 30px;
+    }
+
+    .Serach-Box .Serach-Dropdown {
+        display: flex;
+        flex-direction: column;
+        gap: 10%;
+    }
+
+    .Serach-Buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 5%;
+        margin-left: 0.5rem;
+    }
+
+    .footer-box .row {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+}
+
+
+/* desktop */
+
+@media (max-width:992px) {
+    .container-head {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 15%;
+    }
+
+    .Catalogue-box {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--color-light);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 5px;
+        height: auto;
+        position: relative;
+        top: 3.5rem;
+        transition: all 0.3s ease;
+        width: 25rem;
+        margin-bottom: 3rem;
+    }
+
+    .Serach-Box {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        background-color: var(--color-light);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 5px;
+        height: auto;
+        position: relative;
+        top: 3.5rem;
+        transition: all 0.3s ease;
+        width: 25rem;
+        padding: 30px;
+    }
+
+    .Serach-Box .Serach-Dropdown {
+        display: flex;
+        flex-direction: column;
+        gap: 10%;
+    }
+
+    .Serach-Buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 5%;
+        margin-left: 0.5rem;
+    }
+
+    .footer-box .row {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+}

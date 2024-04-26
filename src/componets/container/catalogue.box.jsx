@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function CatalogueBox({ selectedclickdata }) {
 
@@ -12,18 +13,25 @@ export default function CatalogueBox({ selectedclickdata }) {
     const [clickdata, setclickdata ] = useState(null);
 
     async function handleclick (Catalogue) {
-        const response = await axios({
-            url: `book/subject?subject=${Catalogue}`,
-            method: "get",
-            headers: {
-                "Authorization": "Bearer " + localStorage.getItem("jwt_token"),
-                "Content-Type": "application/json"
-            }
-        })
+        try {
 
-        if(response.status === 200) {
-            setclickdata(response.data);
-            selectedclickdata(response.data);
+            const response = await axios({
+                url: `book/subject?subject=${Catalogue}`,
+                method: "get",
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("jwt_token"),
+                    "Content-Type": "application/json"
+                }
+            })
+            
+            if(response.status === 200) {
+                setclickdata(response.data);
+                selectedclickdata(response.data);
+            } 
+        } catch(error) {
+            if(error.response.data.statusCode === 401) {
+                toast.error("Unathorised! ")
+            }
         }
     }
 
@@ -44,6 +52,9 @@ export default function CatalogueBox({ selectedclickdata }) {
                 }
             } catch (error) {
                 console.log(error);
+                if(error.response.data.statusCode === 401) {
+                    toast.error("Unathorised! ")
+                }
             }
         }
 

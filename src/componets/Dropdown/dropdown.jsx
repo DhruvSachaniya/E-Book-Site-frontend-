@@ -36,7 +36,7 @@ export default function DropdownMenu({ onSubjectChange }) {
     return (
         <>  
         <div>
-            <h3 className='dropdown-header'>subject:-</h3>
+            <h3 className='dropdown-header'>Catalogue:-</h3>
             <div className="dropdown-content">
                 <select value={selectedOption} onChange={handleOptionChange}>
                     <option value="">--Please Select--</option>

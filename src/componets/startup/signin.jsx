@@ -46,11 +46,14 @@ export default function SigninPage() {
                     localStorage.setItem("jwt_token", response.data.token);
                     localStorage.setItem("Role", response.data.role)
                 }
-            } else if(response.status === 401) {
-                toast.error("Unauthorized");
-            } 
+            }  
         } catch (error) {
-            console.log(error);
+            if(error.response.data.statusCode === 404) {
+                toast.error("Enrollment Doesn't exits! ")
+            }
+            if(error.response.data.statusCode === 401) {
+                toast.error("Wrong Password! ")
+            }
         }
     }
     

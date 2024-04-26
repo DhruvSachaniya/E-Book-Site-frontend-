@@ -22,8 +22,8 @@ export default function TableData(props) {
       <table className="Search-Table">
         <thead>
           <tr>
-            <th>Title</th>
             <th>Subject</th>
+            <th>Department</th>
             <th>PDF</th>
           </tr>
         </thead>

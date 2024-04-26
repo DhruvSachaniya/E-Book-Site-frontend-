@@ -7,7 +7,7 @@ export default function Header() {
                 </a>
             </div>
             <div className="Header-h2" style={{ backgroundImage: "url(https://silveroakuni.ac.in/upload/images/slider/3.webp)", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
-                <h2>welcome to university E-Book-Library</h2>
+                <h2>Welcome To E-Library</h2>
             </div>
         </div>
     );

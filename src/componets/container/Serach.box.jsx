@@ -6,6 +6,7 @@ import RefreshButton from "../buttons/refresh";
 import TableData from "../Table-componets/tableshow";
 import PostBook from "../buttons/Postbook";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function SerachBox (props) {
 
@@ -35,6 +36,11 @@ export default function SerachBox (props) {
         .then((res) => {
             setallbooks(res.data);
         })
+        .catch((error) => {
+            if(error.response.data.statusCode === 401) {
+                toast.error("Unathorised! ")
+            }
+        })
     },[])
 
     useEffect(() => {
@@ -58,15 +64,15 @@ export default function SerachBox (props) {
     }, [clickAtagdata]);
 
     const handleSearch = async (data) => {
+        console.log(data)
         setselectedtabledata(data);
-        console.log(data);
-        if(data.length === 0 || data === null) {
+        if(data?.length === 0 || data === null) {
             setselectedtablenumber(data.length);
         }
-        if(data.length > 2) {
+        if(data?.length > 2) {
             setselectedtablenumber(data.length);
         } else {
-            const datalength = await data.length > 0 ? data[0].Posts.length : 0;
+            const datalength = await data.length > 0 ?? 0;
             setselectedtablenumber(datalength);
         }
     };
@@ -74,7 +80,7 @@ export default function SerachBox (props) {
 
     return(
         <div className="Serach-Box">
-            <h1 style={{marginLeft: "0.5rem" }}>E-book catalogue</h1>
+            <h1 style={{marginLeft: "0.5rem" }}>E-book Catalogue</h1>
             <div className="Serach-Dropdown">
                 <DropdownMenu onSubjectChange={(subject) => setSelectedSubject(subject)}/>
                 <TitleInputBox onTitleChange={(title) => setselectedtitle(title)}/>

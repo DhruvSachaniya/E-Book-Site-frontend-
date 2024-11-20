@@ -1,13 +1,13 @@
 import React from "react";
 
 export default function TableData(props) {
-  console.log(props.number)
+  console.log(props.number);
 
   const pstyle = {
     marginTop: "2rem",
     marginLeft: "0.5rem",
     color: "var(--color-silverockunivercity)",
-  }
+  };
 
   return (
     <>
@@ -29,31 +29,52 @@ export default function TableData(props) {
         </thead>
         <tbody>
           {props.data &&
-            props.data.map((item) => (
+            props.data.map((item) =>
               Array.isArray(item.Posts) ? (
                 item.Posts.map((post) => (
                   <tr key={post.id}>
                     <td>{post.Name}</td>
                     <td>{post.Catalogue_name}</td>
-                    <td><button onClick={() => window.open(`http://localhost:3333/uploads/${encodeURIComponent(post.FileUrl)}`)}
-                      className="pdf-button">
-                      PDF
-                    </button></td>
+                    <td>
+                      <button
+                        onClick={() =>
+                          window.open(
+                            `http://localhost:3333/uploads/${encodeURIComponent(
+                              post.FileUrl
+                            )}`
+                          )
+                        }
+                        className="pdf-button"
+                      >
+                        PDF
+                      </button>
+                    </td>
                   </tr>
                 ))
               ) : (
                 <tr key={item.id}>
                   <td>{item.Name}</td>
                   <td>{item.Catalogue_name}</td>
-                  <td><button onClick={() => window.open(`http://localhost:3333/uploads/${encodeURIComponent(item.FileUrl)}`)}
-                    className="pdf-button">
-                    PDF
-                  </button></td>
+                  <td>
+                    <button
+                      onClick={() =>
+                        window.open(
+                          `http://localhost:3333/uploads/${encodeURIComponent(
+                            item.FileUrl
+                          )}`
+                        )
+                      }
+                      className="pdf-button"
+                    >
+                      PDF
+                    </button>
+                  </td>
                 </tr>
               )
-            ))}
+            )}
         </tbody>
       </table>
+      {/* Add Pagination, React Redux, Material Ui */}
     </>
   );
 }

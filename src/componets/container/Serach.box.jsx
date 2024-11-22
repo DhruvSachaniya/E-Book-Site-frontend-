@@ -7,94 +7,102 @@ import TableData from "../Table-componets/tableshow";
 import PostBook from "../buttons/Postbook";
 import axios from "axios";
 import toast from "react-hot-toast";
+import PaginationCompo from "../Pagination/muipagination";
 
-export default function SerachBox (props) {
+export default function SerachBox(props) {
+  const { clickAtagdata } = props;
 
-    const { clickAtagdata } = props;
+  const [isadmin, setisadmin] = useState(false);
 
-    const [isadmin, setisadmin] = useState(false);
+  const [selectedSubject, setSelectedSubject] = useState(null);
 
-    const [ selectedSubject, setSelectedSubject ] = useState(null);
+  const [selectedtitle, setselectedtitle] = useState("");
 
-    const [ selectedtitle, setselectedtitle ] = useState("");
+  const [selectedtabledata, setselectedtabledata] = useState(null);
 
-    const [ selectedtabledata, setselectedtabledata ] = useState(null);
+  const [selectedtablenumber, setselectedtablenumber] = useState(null);
 
-    const [ selectedtablenumber, setselectedtablenumber ] = useState(null);
+  const [allbooks, setallbooks] = useState(null);
 
-    const [ allbooks, setallbooks ] = useState(null);
-
-    useEffect(() => {
-        axios({
-            url: "book/all",
-            method: "get",
-            headers: {
-                "Authorization": "Bearer " + localStorage.getItem("jwt_token"),
-                "Content-Type": "application/json"
-            }
-        })
-        .then((res) => {
-            setallbooks(res.data);
-        })
-        .catch((error) => {
-            if(error.response.data.statusCode === 401) {
-                toast.error("Unathorised! ")
-            }
-        })
-    },[])
-
-    useEffect(() => {
-        if(allbooks) {
-            setselectedtabledata(allbooks);
+  useEffect(() => {
+    axios({
+      url: "book/all",
+      method: "get",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwt_token"),
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        setallbooks(res.data);
+      })
+      .catch((error) => {
+        if (error.response.data.statusCode === 401) {
+          toast.error("Unathorised! ");
         }
-    }, [allbooks])
+      });
+  }, []);
 
-    useEffect(() => {
-        if (localStorage.getItem("Role") === "admin") {
-            setisadmin(true);
-        }
-    }, [])
+  useEffect(() => {
+    if (allbooks) {
+      setselectedtabledata(allbooks);
+    }
+  }, [allbooks]);
 
-    useEffect(() => {
-        if (clickAtagdata) {
-            setselectedtabledata(clickAtagdata);
-            const datalength = clickAtagdata.map(item => item.Posts.length);
-            setselectedtablenumber(datalength);
-        }
-    }, [clickAtagdata]);
+  useEffect(() => {
+    if (localStorage.getItem("Role") === "admin") {
+      setisadmin(true);
+    }
+  }, []);
 
-    const handleSearch = async (data) => {
-        console.log(data)
-        setselectedtabledata(data);
-        if(data?.length === 0 || data === null) {
-            setselectedtablenumber(data.length);
-        }
-        if(data?.length > 2) {
-            setselectedtablenumber(data.length);
-        } else {
-            const datalength = await data.length > 0 ?? 0;
-            setselectedtablenumber(datalength);
-        }
-    };
+  useEffect(() => {
+    if (clickAtagdata) {
+      setselectedtabledata(clickAtagdata);
+      const datalength = clickAtagdata.map((item) => item.Posts.length);
+      setselectedtablenumber(datalength);
+    }
+  }, [clickAtagdata]);
 
+  const handleSearch = async (data) => {
+    console.log(data);
+    setselectedtabledata(data);
+    if (data?.length === 0 || data === null) {
+      setselectedtablenumber(data.length);
+    }
+    if (data?.length > 2) {
+      setselectedtablenumber(data.length);
+    } else {
+      const datalength = (await data.length) > 0 ?? 0;
+      setselectedtablenumber(datalength);
+    }
+  };
 
-    return(
-        <div className="Serach-Box">
-            <h1 style={{marginLeft: "0.5rem" }}>E-book Catalogue</h1>
-            <div className="Serach-Dropdown">
-                <DropdownMenu onSubjectChange={(subject) => setSelectedSubject(subject)}/>
-                <TitleInputBox onTitleChange={(title) => setselectedtitle(title)}/>
-            </div>
-            <div className="Serach-Buttons">
-                <SearchButton subject={selectedSubject} title={selectedtitle} onSearch={handleSearch}/>
-                <RefreshButton/>
-                {isadmin && (
-                    <PostBook/>
-                )}
-            </div>
-            <div>
-                <TableData data={selectedtabledata} number={selectedtablenumber}/>
-            </div>
+  //   count the number of table data and then divide it to the showing value
+
+  return (
+    <>
+      <div className="Serach-Box">
+        <h1 style={{ marginLeft: "0.5rem" }}>E-book Catalogue</h1>
+        <div className="Serach-Dropdown">
+          <DropdownMenu
+            onSubjectChange={(subject) => setSelectedSubject(subject)}
+          />
+          <TitleInputBox onTitleChange={(title) => setselectedtitle(title)} />
         </div>
-    );
+        <div className="Serach-Buttons">
+          <SearchButton
+            subject={selectedSubject}
+            title={selectedtitle}
+            onSearch={handleSearch}
+          />
+          <RefreshButton />
+          {isadmin && <PostBook />}
+        </div>
+        <div>
+          <TableData data={selectedtabledata} number={selectedtablenumber} />
+        </div>
+        <PaginationCompo countPage={20} />
+      </div>
+    </>
+  );
 }

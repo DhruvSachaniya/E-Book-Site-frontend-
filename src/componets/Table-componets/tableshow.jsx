@@ -1,12 +1,10 @@
-import React from "react";
+import React from 'react';
 
 export default function TableData(props) {
-  console.log(props.number);
-
   const pstyle = {
-    marginTop: "2rem",
-    marginLeft: "0.5rem",
-    color: "var(--color-silverockunivercity)",
+    marginTop: '2rem',
+    marginLeft: '0.5rem',
+    color: 'var(--color-silverockunivercity)',
   };
 
   return (
@@ -40,8 +38,8 @@ export default function TableData(props) {
                         onClick={() =>
                           window.open(
                             `http://localhost:3333/uploads/${encodeURIComponent(
-                              post.FileUrl
-                            )}`
+                              post.FileUrl,
+                            )}`,
                           )
                         }
                         className="pdf-button"
@@ -60,8 +58,8 @@ export default function TableData(props) {
                       onClick={() =>
                         window.open(
                           `http://localhost:3333/uploads/${encodeURIComponent(
-                            item.FileUrl
-                          )}`
+                            item.FileUrl,
+                          )}`,
                         )
                       }
                       className="pdf-button"
@@ -70,7 +68,7 @@ export default function TableData(props) {
                     </button>
                   </td>
                 </tr>
-              )
+              ),
             )}
         </tbody>
       </table>

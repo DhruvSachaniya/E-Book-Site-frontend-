@@ -34,7 +34,7 @@ export default function SearchButton(props) {
               },
             })
               .then((res) => {
-                props.onSearch(res.data);
+                props.onSearch(res.data[0]?.Posts);
               })
 
               .catch((error) => {

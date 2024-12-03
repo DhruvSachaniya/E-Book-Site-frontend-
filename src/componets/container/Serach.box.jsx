@@ -75,6 +75,10 @@ export default function SearchBox(props) {
 
   const handleSearch = (data) => {
     dispatch(counterTable(data?.length || 0));
+    dispatch(StoreTableData(data || []));
+
+    const currentPageData = data.slice(0, itemsPerPage);
+    dispatch(UpdatePageData(currentPageData));
   };
 
   return (
